@@ -5,3 +5,5 @@ parts/*
 eggs/*
 develop-eggs/*
 *.pyc
+etc/*
+var/*
