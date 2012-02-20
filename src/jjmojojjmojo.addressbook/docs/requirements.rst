@@ -48,7 +48,7 @@ Looking at the basic request, there are a few assumptions we can make:
 We'll assume I've worked for this company for a while, and I know a few things about how the sales department does their thing:
 
     - Sales contacts for each staff member are duplicated in a central worksheet for mass e-mail campaigns
-    - Otherwise, sales contacts are typically not shared (each staffer is assigned to a number of clients they service exclusively), but some big clients are assigned to multiple clients.
+    - Otherwise, sales contacts are typically not shared (each staffer is assigned to a number of clients they service exclusively), but some big clients are assigned to multiple staff.
     - The sales staff is growing - there's real business value in this rough business procedure being put online and streamlined.
     - They classify clients by industry.
     
@@ -56,19 +56,24 @@ At this point we're starting to sketch out the features in our heads:
 
     - We'll need a basic Address management UI (create, replace, update, delete)
     - We'll need a way for addresses to show up in two places
-    - We'll need a way to manage industry classifications - tagging system?
+    - We'll need a way to manage industry classifications
     - We'll need per-contact permissions
     - We'll need user management of some kind
-    
-There are many ways to implement each of these, and it still seems a little vague. 
 
-This is the point where some quick research is warranted. I would check out other contact management/address book systems. I'd call sales, or drop by, and take a look at the current spreadsheets. I'd make sure what my customer contact was asking for is what's needed (there have been many times when I have been asked to do something that didn't solve the real problem).
+But there are still lots of questions that need to be answered.    
 
-And then few e-mail volleys, asking some questions, such as:
+This is the point where some quick research is warranted. I would check out other contact management/address book systems. I'd call sales, or drop by, and take a look at the current spreadsheets. 
+
+As a side goal, I'd make sure what my customer contact was asking for is what's really needed. 
+
+.. tip::
+   Experience has shown that often the problem someone asks you to solve is a symptom of a larger problem. Good analysis will help ferret out these sorts of issues.  
+
+A few e-mail volleys are in order, posing some questions and concerns, such as:
 
     - How should we do authentication?
     - What inputs/outputs are needed (e.g. do they want to export to excel?)
-    - Specifically, what fields do you want to capture?
+    - What fields need to be captured?
     
         - Will there just be one possible value for each field? (should we have three 'business phone', 'home phone' 'mobile phone' fields, or a way to add any number of phone numbers and classify as needed?)
         - Will we need to indicate which one is preferred?
@@ -76,7 +81,7 @@ And then few e-mail volleys, asking some questions, such as:
     - Will you want the initial data loaded from excel, or will it be entered manually?
     - What other features would be helpful?
     - Search features?
-    - Simple classifications (central list) or arbitrary (like twitter hash tags)?
+    - Fixed list classifications or would they be arbitrary?
     - Any sensitive data stored? (SSNs, medical info)
     - Any specific technological or standards restrictions?
         
@@ -90,8 +95,7 @@ And then few e-mail volleys, asking some questions, such as:
 Imagine we had some back and fourth, had some meetings, and got these answers:
 
     - We'll use the company's AD for authentication (*yes, I see how you might think that's ironic*)
-    - There's no need for import or export at this stage.
-    - They would like to consider adding export to a format they can load into Thunderbird (LDIF?)
+    - There's no need for general import or export at this stage, but they would like to consider adding export to a format they can load into Thunderbird
     - The data will not contain anything sensitive.
     - There will be a fixed field list (see below), but a few fields will need to be one-to-many with an indication that one of them is preferred
     - There should be a flexible tagging system to classify contacts
@@ -101,7 +105,7 @@ Imagine we had some back and fourth, had some meetings, and got these answers:
     - The site should work in as many browsers as possible, but Sales uses FireFox, so that's our primary target.
     - No restrictions as far as section 508 or any other standards. Mobile access would be great but can be handled in a later version.
     - I can host and deploy the app however I want (they're providing a linux server); they do want to use their existing PostgreSQL database cluster to store the data.
-    - They don't need full-blown workflow in the app, but they do have the concept of a "disabled" contact; someone who is no longer a customer. They do have a few processes they  may want to incorporate later.
+    - They don't need full-blown workflow in the app, but they do have the concept of a "disabled" contact; someone who is no longer a customer. They do have a few processes they may want to incorporate later.
     
 We also got a new feature:
 
@@ -109,7 +113,12 @@ We also got a new feature:
     
 So, this is a lot. The next step is to turn these data points into a general requirements document. Something that the customer (and preferably Sales!) could sign off on.
 
-But even if the document isn't used as a contract, it's a great way to keep the scope in check. I've also found writing them up can help expose oversights (*wait, how do we handle regions?*)
+.. tip::
+    'Sign-off' implies a contract. This is a great use of this intermediate requirements document. 
+    
+    But even if the document isn't used as a contract, it's a great way to keep the scope in check. 
+    
+    Further, translating technical requirements into prose helps catch oversights or potential issues that might impede progress (*wait, how do we handle regions?*).
 
 Finalized Requirements
 ======================
@@ -230,8 +239,8 @@ All multiple fields will provide a title for each field (e.g. you can identify t
 +--------------------------------+----------------------------------------------------+----------+
 | Notes                          | Additional information                             |      Yes.|
 +--------------------------------+----------------------------------------------------+----------+
-| Gender                         | Male, Female, Unknown - to help avoid awkward      |       No.|
-|                                | situations, note the contact's gender              |          |
+| Gender                         | Male, Female, Unknown                              |       No.|
+|                                |                                                    |          |
 +--------------------------------+----------------------------------------------------+----------+
 
 .. _businesses-data:

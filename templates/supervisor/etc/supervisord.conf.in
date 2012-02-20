@@ -29,6 +29,12 @@ serverurl=unix://${buildout:directory}/var/supervisor.sock ; use a unix:// URL  
 history_file=~/.sc_history  ; use readline history if available
 
 [program:docs]
-command = ${buildout:bin-directory}/python -m SimpleHTTPServer ${ports:public}
-directory = ${buildout:directory}/www
+command = ${buildout:bin-directory}/python -m SimpleHTTPServer ${ports:docs}
+directory = ${buildout:directory}/www/html
 redirect_stderr=true
+
+[program:autodoc]
+# maintains the 'nosier' inotify watching tool, to build the docs whenever the files change.
+command = ${buildout:bin-directory}/nosier --path=${buildout:directory}/src/jjmojojjmojo.addressbook/docs "${buildout:bin-directory}/buildout -No install generate-docs"
+redirect_stderr = true
+directory = ${buildout:directory}

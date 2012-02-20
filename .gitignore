@@ -8,3 +8,4 @@ develop-eggs/*
 etc/*
 var/*
 www/*
+*.orig
