@@ -120,6 +120,8 @@ So, this is a lot. The next step is to turn these data points into a general req
     
     Further, translating technical requirements into prose helps catch oversights or potential issues that might impede progress (*wait, how do we handle regions?*).
 
+.. _finalized-requirements:
+
 Finalized Requirements
 ======================
 

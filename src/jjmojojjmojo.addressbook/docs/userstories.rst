@@ -101,6 +101,8 @@ We'll be using a simplified Use Case template, focusing on use case diagrams.
 .. todo::
    Provide Use Case details - just doing diagrams for now.
 
+.. _user-story-user-management:
+
 User Management
 ---------------
 Sales Managers need to be able to manage users of the system. Managed users will have roles associated with them, and basic contact information. For the purposes of authentication, a user name and password will be stored and managed by the system.
@@ -109,6 +111,8 @@ Use Cases
 ~~~~~~~~~
 .. image:: uml/User_Management.*
 
+
+.. _user-story-contact-management:
 
 Contact Management
 ------------------
@@ -127,6 +131,8 @@ Use Cases
 ~~~~~~~~~
 .. image:: uml/Contact_Management.*
 
+.. _user-story-organization-management:
+
 Organization Management
 -----------------------
 Like contacts, we would also like to manage information about businesses, or the organizations
@@ -142,6 +148,8 @@ Use Cases
 ~~~~~~~~~
 .. image:: uml/Organization_Management.*
 
+.. _user-story-regions:
+
 Regions
 -------
 We need to be able to maintain a hierarchical list of regions we service, so we can associate contacts,
@@ -153,6 +161,8 @@ in a listing or search for Missouri, The Mid West, North America, USA, Western H
 Use Cases
 ~~~~~~~~~
 .. image:: uml/Regions.*
+
+.. _user-story-tagging:
 
 Tagging
 -------
@@ -166,6 +176,8 @@ Use Cases
 ~~~~~~~~~
 .. image:: uml/Tagging.*
 
+.. _user-story-search:
+
 Search
 ------
 All users need to be able to find contacts easily. At minimum, they should be able to search arbitrarily by
@@ -177,6 +189,8 @@ Use Cases
 ~~~~~~~~~
 .. image:: uml/Search.*
 
+.. _user-story-mass-e-mail:
+
 Mass E-mail
 -----------
 Any user of the system needs to be able to send a bulk e-mail, formatted as HTML, to 
@@ -186,6 +200,8 @@ Use Cases
 ~~~~~~~~~
 .. image:: uml/Mass_E-mail.*
 
+.. _user-story-print-labels:
+
 Print Labels
 ------------
 Any user of the system needs to be able to print out labels from an entire contact list, or the
@@ -194,6 +210,8 @@ results of a search.
 Use Cases
 ~~~~~~~~~
 .. image:: uml/Print_Labels.*
+
+.. _user-story-administration-back-end:
 
 Administration Back-End
 -----------------------
