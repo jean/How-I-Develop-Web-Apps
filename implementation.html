@@ -1,0 +1,214 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Implementation &mdash; How I Build Web Apps</title>
+    
+    <link rel="stylesheet" href="_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="#" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.0.1a',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/toggle_sections.js"></script>
+    <link rel="top" title="How I Build Web Apps" href="index.html" />
+    <link rel="next" title="TODO" href="todo.html" />
+    <link rel="prev" title="Project Breakdown" href="userstories.html" /> 
+  </head>
+  <body>
+    <div class="relbar-top">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="todo.html" title="TODO"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="userstories.html" title="Project Breakdown"
+             accesskey="P">previous</a> |</li>
+    <li><a href="index.html">How I Develop Web Apps Documentation</a> &raquo; </li>
+ 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="implementation">
+<h1>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>At this point, the requirements have been nailed down, broken up into manageable parts, and analyzed.</p>
+<p>The last planning step before we start coding is to work out the implementation details.</p>
+<p>The level of detail in this phase is variable. For some projects, a summary of technical approach is enough. For others, fine detail about language constructs and object definitions might be more appropriate, complete with process diagrams and pixel-perfect UI mockups. The level of detail can (and often will) vary from feature to feature, or story to story, or case to case.</p>
+<p>The goal is to lay out a blueprint for building each piece of the application. You want to produce artifacts that developers can follow, and customers can understand. A developer should, given the project artifacts (user stories, use cases, implementation details), be able to build an application to meet the requirements with little guidance.</p>
+<p>To meet those goals, the tone and voice should technical, but explanatory. Comprehensive but not necessarily exhaustive.</p>
+<p>Rough mockups are sometimes useful when writing up User Stories and Use Cases, but they must be vague and shouldn&#8217;t tie the story or case to a specific UI.</p>
+<p>Within implementation details, precise mockups are appropriate, even encouraged. Again, you&#8217;re conveying to other developers and your customer <em>how</em> things will work. It&#8217;s acceptable to introduce front-end designs at this point.</p>
+<p>Remember to be specific about what target release or sprint the implementation details are for; the goal is to meet the requirements <em>just enough</em> with each development cycle. There will often still be enhancements or refinements that will be slated to be worked on later.</p>
+<p>There are several positive side effects of this process:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Typically, there are a number of ways to meet a given set of requirements; this process helps narrow in on the best way for the given time frame or release.</li>
+<li>Further, discussing implementation details amongst developers fosters collaboration and helps expose engineering and planning errors.</li>
+<li>It becomes easier to estimate. In a Planning Poker session, it can often be difficult to come to a consensus without first agreeing on an approach.</li>
+<li>It&#8217;s easier to hand off a feature to another developer (or even another team) if the bulk of the design is pinned down and the project artifacts are written up well.</li>
+<li>Sprints go smoother because there are fewer possibilities for blocking due to waiting for customer input, taking time to research how to implement something, or general pondering of design. If implementation documentation is done well, almost all of the questions are answered before work begins, so the developers can focus on producing sound, well tested code.</li>
+<li>The customer is encouraged to read implementation details and express their opinions or objections. This way they know what to expect in the finished product, they have a chance to catch oversights, and they can &#8216;fuss&#8217; over small issues (&#8216;can we make it <em>green</em> instead of <em>blue</em>&#8216;; &#8216;that should be a <em>checkbox</em>, not a <em>dropdown</em>&#8216;; &#8216;this doesn&#8217;t look anything like <em>amazon dot com</em>!&#8217;) before major design decisions are finalized.</li>
+<li>When implementation details are specific, they can be relied on as limits for what is implemented during a given sprint or target release (<em>&#8216;for iteration #1, we&#8217;re going to store these values in a JSON file, in iteration #2, we&#8217;ll be migrating to MongoDB&#8217;</em>)</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="general-technological-approach">
+<h2>General Technological Approach<a class="headerlink" href="#general-technological-approach" title="Permalink to this headline">¶</a></h2>
+<p>Based on <a class="reference internal" href="requirements.html#finalized-requirements"><em>Finalized Requirements</em></a>, we have made some basic platform and approach decisions:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Back-End Language:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><a class="reference external" href="http://python.org">Python</a>, version 2.6.6.</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Application framework:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><a class="reference external" href="http://docs.pylonsproject.org/en/latest/docs/pyramid.html">Pyramid</a>, version 1.3</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Data Store:</th><td class="field-body"><a class="reference external" href="http://www.postgresql.org/">PostgreSQL</a>, version 9. We will use <a class="reference external" href="http://www.sqlalchemy.org/">SQLAlchemy</a> and <a class="reference external" href="http://alembic.readthedocs.org/en/latest/index.html">Alembic</a> for database abstraction and migrations.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Packaging:</th><td class="field-body">The application will be distributable as a python egg, and will include a <a class="reference external" href="http://pypi.python.org/pypi/zc.buildout/1.5.2">zc.buildout</a> buildout to build the documentation, develop, test, and deploy the application.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Documentation:</th><td class="field-body">Maintained via <a class="reference external" href="http://sphinx.pocoo.org/">Sphinx</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">URL Strategy:</th><td class="field-body">We will be using url mapping.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">UI Approach:</th><td class="field-body">Javascript-driven (<a class="reference external" href="http://jquery.com/">Jquery</a>), asynchronous.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="rationale-expansion">
+<h3>Rationale/Expansion<a class="headerlink" href="#rationale-expansion" title="Permalink to this headline">¶</a></h3>
+<p>I&#8217;ve had good experience working with Pyramid and Python for this sort of web application. It provides a robust object mapping system that&#8217;s easy to test. It has a access control system built-in that is easy to implement and robust in spite of being relatively simple.</p>
+<p>SQLAlchemy is one of the nicest database abstraction libraries I&#8217;ve ever used. It will provide flexibility when it comes to changing back-end databases over time. Alembic will help manage the data model as it evolves. We&#8217;re targeting PostgreSQL 9 since it&#8217;s what our customer already has in place. We&#8217;ll leverage sqlite to facilitate faster unit testing of the data model and business logic.</p>
+<p>This is a modern application, it&#8217;s ideal for more modern dynamic, asynchronous, browser-driven approach. JQuery makes this easy. In general, this will be implemented as a RESTful API, using JSON as the interchange format.</p>
+</div>
+</div>
+<div class="section" id="implementation-details">
+<h2>Implementation Details<a class="headerlink" href="#implementation-details" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="user-management">
+<h3>User Management<a class="headerlink" href="#user-management" title="Permalink to this headline">¶</a></h3>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="userstories.html#user-story-user-management"><em>User Management</em></a></p>
+</div>
+<div class="section" id="release-1-v-0-0-1">
+<h4>Release #1 (v. 0.0.1)<a class="headerlink" href="#release-1-v-0-0-1" title="Permalink to this headline">¶</a></h4>
+<p>For the first pass, we will focus on authentication and basic creation/management of users.</p>
+<p>We will implement the authentication for the system as a Pyramid <em>authentication policy</em>. We will look at a specific HTTP header or WSGI variable expected to be passed on by a front-end proxy;</p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Implementation</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#general-technological-approach">General Technological Approach</a><ul>
+<li><a class="reference internal" href="#rationale-expansion">Rationale/Expansion</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#implementation-details">Implementation Details</a><ul>
+<li><a class="reference internal" href="#user-management">User Management</a><ul>
+<li><a class="reference internal" href="#release-1-v-0-0-1">Release #1 (v. 0.0.1)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="userstories.html"
+                        title="previous chapter">Project Breakdown</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="todo.html"
+                        title="next chapter">TODO</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/implementation.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="todo.html" title="TODO"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="userstories.html" title="Project Breakdown"
+             >previous</a> |</li>
+    <li><a href="index.html">How I Develop Web Apps Documentation</a> &raquo; </li>
+ 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2012, Josh Johnson.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

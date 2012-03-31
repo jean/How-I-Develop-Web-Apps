@@ -1,0 +1,496 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Requirements &mdash; How I Build Web Apps</title>
+    
+    <link rel="stylesheet" href="_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="#" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.0.1a',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/toggle_sections.js"></script>
+    <link rel="top" title="How I Build Web Apps" href="index.html" />
+    <link rel="next" title="Project Breakdown" href="userstories.html" />
+    <link rel="prev" title="jjmojojjmojo.addressbook - Advanced Pyramid Example Application" href="index.html" /> 
+  </head>
+  <body>
+    <div class="relbar-top">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="userstories.html" title="Project Breakdown"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="jjmojojjmojo.addressbook - Advanced Pyramid Example Application"
+             accesskey="P">previous</a> |</li>
+    <li><a href="index.html">How I Develop Web Apps Documentation</a> &raquo; </li>
+ 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="requirements">
+<h1>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h1>
+<p>This project serves primarily as a technical example, but it is
+also a way for me to document my overall process for developing applications.</p>
+<p>Here we will pretend the requirements for the project came from a customer, and
+illustrate the process of finalizing the requirements prior to the next step,
+breaking out user stories.</p>
+<div class="section" id="customer-request">
+<h2>Customer Request<a class="headerlink" href="#customer-request" title="Permalink to this headline">¶</a></h2>
+<p>Customer needs are often relayed to developers in very informal, ad-hoc ways.</p>
+<p>Here&#8217;s the example we will be working from, which I feel is pretty typical:</p>
+<div class="highlight-python"><pre>To: jjmojojjmojo
+From: A. Customer &lt;a.valued.customer@place.of.business.co.zz&gt;
+Subject: Contact List Help
+
+JJ,
+Sales has been keeping our business contacts in a handful of excel
+spreadsheets and it's getting hard to manage.
+
+We need a way to keep track of contacts, can we add something to
+the intranet?
+
+Thanks,
+A.</pre>
+</div>
+<p>Not a lot of detail, sure. In spite of that, this is probably enough for me to run off and build an application.</p>
+<p>However, experience has shown that for maximum efficiency, consistent success and a happy relationship with your customers, it&#8217;s important to nail down the specifics. As early as possible.</p>
+<p>This is where analysis comes in.</p>
+</div>
+<div class="section" id="analysis">
+<h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
+<p>Looking at the basic request, there are a few assumptions we can make:</p>
+<blockquote>
+<div><ul class="simple">
+<li>they are used to a tabular representation of their data</li>
+<li>there are common address fields that we can count on being there (first name, last name, phone number, e-mail, etc)</li>
+<li>it should be web-based.</li>
+</ul>
+</div></blockquote>
+<p>We&#8217;ll assume I&#8217;ve worked for this company for a while, and I know a few things about how the sales department does their thing:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Sales contacts for each staff member are duplicated in a central worksheet for mass e-mail campaigns</li>
+<li>Otherwise, sales contacts are typically not shared (each staffer is assigned to a number of clients they service exclusively), but some big clients are assigned to multiple staff.</li>
+<li>The sales staff is growing - there&#8217;s real business value in this rough business procedure being put online and streamlined.</li>
+<li>They classify clients by industry.</li>
+</ul>
+</div></blockquote>
+<p>At this point we&#8217;re starting to sketch out the features in our heads:</p>
+<blockquote>
+<div><ul class="simple">
+<li>We&#8217;ll need a basic Address management UI (create, replace, update, delete)</li>
+<li>We&#8217;ll need a way for addresses to show up in two places</li>
+<li>We&#8217;ll need a way to manage industry classifications</li>
+<li>We&#8217;ll need per-contact permissions</li>
+<li>We&#8217;ll need user management of some kind</li>
+</ul>
+</div></blockquote>
+<p>But there are still lots of questions that need to be answered.</p>
+<p>This is the point where some quick research is warranted. I would check out other contact management/address book systems. I&#8217;d call sales, or drop by, and take a look at the current spreadsheets.</p>
+<p>As a side goal, I&#8217;d make sure what my customer contact was asking for is what&#8217;s really needed.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Experience has shown that often the problem someone asks you to solve is a symptom of a larger problem. Good analysis will help ferret out these sorts of issues.</p>
+</div>
+<p>A few e-mail volleys are in order, posing some questions and concerns, such as:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">How should we do authentication?</p>
+</li>
+<li><p class="first">What inputs/outputs are needed (e.g. do they want to export to excel?)</p>
+</li>
+<li><p class="first">What fields need to be captured?</p>
+<blockquote>
+<div><ul class="simple">
+<li>Will there just be one possible value for each field? (should we have three &#8216;business phone&#8217;, &#8216;home phone&#8217; &#8216;mobile phone&#8217; fields, or a way to add any number of phone numbers and classify as needed?)</li>
+<li>Will we need to indicate which one is preferred?</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Will you want the initial data loaded from excel, or will it be entered manually?</p>
+</li>
+<li><p class="first">What other features would be helpful?</p>
+</li>
+<li><p class="first">Search features?</p>
+</li>
+<li><p class="first">Fixed list classifications or would they be arbitrary?</p>
+</li>
+<li><p class="first">Any sensitive data stored? (SSNs, medical info)</p>
+</li>
+<li><p class="first">Any specific technological or standards restrictions?</p>
+<blockquote>
+<div><ul class="simple">
+<li>Browser compatibility</li>
+<li>Section 508</li>
+<li>Hosting platform (server, back-end, etc)</li>
+<li>Mobile</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Any business processes (e.g. workflows) to model in the app?</p>
+</li>
+</ul>
+</div></blockquote>
+<p>Imagine we had some back and fourth, had some meetings, and got these answers:</p>
+<blockquote>
+<div><ul class="simple">
+<li>We&#8217;ll use the company&#8217;s AD for authentication (<em>yes, I see how you might think that&#8217;s ironic</em>)</li>
+<li>There&#8217;s no need for general import or export at this stage, but they would like to consider adding export to a format they can load into Thunderbird</li>
+<li>The data will not contain anything sensitive.</li>
+<li>There will be a fixed field list (see below), but a few fields will need to be one-to-many with an indication that one of them is preferred</li>
+<li>There should be a flexible tagging system to classify contacts</li>
+<li>They would like to be able to find contacts by name, e-mail, phone #, tag, and region (state, continent, hemisphere, etc)</li>
+<li>They would like to send HTML mass-emails to an entire contact list, or a search result.</li>
+<li>They would like to print address labels from searches and contact lists</li>
+<li>The site should work in as many browsers as possible, but Sales uses FireFox, so that&#8217;s our primary target.</li>
+<li>No restrictions as far as section 508 or any other standards. Mobile access would be great but can be handled in a later version.</li>
+<li>I can host and deploy the app however I want (they&#8217;re providing a linux server); they do want to use their existing PostgreSQL database cluster to store the data.</li>
+<li>They don&#8217;t need full-blown workflow in the app, but they do have the concept of a &#8220;disabled&#8221; contact; someone who is no longer a customer. They do have a few processes they may want to incorporate later.</li>
+</ul>
+</div></blockquote>
+<p>We also got a new feature:</p>
+<blockquote>
+<div><ul class="simple">
+<li>They also need to tack contacts that are actually <em>businesses</em>. This isn&#8217;t happening in any special way in the excel spreadsheets. Regular contacts get associated with a business. Mass e-mail and search features need to also work for businesses.</li>
+</ul>
+</div></blockquote>
+<p>So, this is a lot. The next step is to turn these data points into a general requirements document. Something that the customer (and preferably Sales!) could sign off on.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>&#8216;Sign-off&#8217; implies a contract. This is a great use of this intermediate requirements document.</p>
+<p>But even if the document isn&#8217;t used as a contract, it&#8217;s a great way to keep the scope in check.</p>
+<p class="last">Further, translating technical requirements into prose helps catch oversights or potential issues that might impede progress (<em>wait, how do we handle regions?</em>).</p>
+</div>
+</div>
+<div class="section" id="finalized-requirements">
+<span id="id1"></span><h2>Finalized Requirements<a class="headerlink" href="#finalized-requirements" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>This section represents a write up of the requirements gathered above. I want to be clear that the way this section is formatted is in no way prescribing a specific format or organizational style.</p>
+<p class="last">This document is an expression in prose of what we feel the customer wants. It should be written in your (or your company&#8217;s) voice, and organized in a way that fits your processes.</p>
+</div>
+<div class="section" id="summary">
+<h3>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h3>
+<p>The Sales department is having trouble managing their sales contacts. They would like to move to a centralized, web-based solution.</p>
+</div>
+<div class="section" id="vital-information">
+<h3>Vital Information<a class="headerlink" href="#vital-information" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Customer Contact:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ol class="first upperalpha simple">
+<li>Customer</li>
+</ol>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Sales Contact:</th><td class="field-body"><p class="first">BA Baracus, Sales Manager, (919) 867-5309</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">Additional Contacts:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first">Hannibal Smith, Sales Associate, (919) 555-0001</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">DBA:</th><td class="field-body"><p class="first">H.M. Murdock, (919) 222-1111</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">IT Manager:</th><td class="field-body"><ol class="first upperalpha simple">
+<li>Contact</li>
+</ol>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Preliminary Due Date:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first last">December 21, 2012</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="overview">
+<h3>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h3>
+<p>The basic idea of the project is a classic address book. Contact information for sales contacts and businesses, organized by a flexible tagging system, and associated with one or more Sales staff.</p>
+<p>The goal is to let individual staff members manage their own clients, while allowing them to share contacts with other staff. All contacts will be centrally managed as well, by the Sales Manager.</p>
+<p>Unless the contact or business is shared in the system, information will not be shown to other sales staff, but can always be seen by the Sales Manager.</p>
+<p>The contacts are used for various purposes beyond basic contact management. Specifically, they are used in notification campaigns. These are usually e-mail based, but sometimes a list of phone numbers is used for phone campaigns, and less frequently, address labels need to be printed off for mail campaigns.</p>
+</div>
+<div class="section" id="user-roles">
+<h3>User Roles<a class="headerlink" href="#user-roles" title="Permalink to this headline">¶</a></h3>
+<p>In this document and subsequent documents, we will refer to users by their role in the system. So far, we&#8217;ve identified three roles:</p>
+<dl class="docutils">
+<dt>Administrator:</dt>
+<dd>A technical user with full rein over every aspect of the system. This user would be in charge of adjusting application-wide settings, and any maintenance tasks that may develop.</dd>
+<dt>Sales Manager:</dt>
+<dd>A user with access to every contact in the system. This user has the ability to manage users, tags, regions, and other central data used throughout the system.</dd>
+<dt>Sales Staffer:</dt>
+<dd>A user who would only see contacts that they added to the system, or contacts that were shared with them.</dd>
+</dl>
+</div>
+<div class="section" id="specific-features">
+<h3>Specific Features<a class="headerlink" href="#specific-features" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>User Management:</dt>
+<dd>People need to access the system. Sales Managers will provide access and create accounts</dd>
+<dt>Contact Management:</dt>
+<dd>Contact information will be managed in an intuitive way. A contact entry could be a business. A contact can be associated with a business. Contacts can be shared between Sales Staff. Contacts will have a fixed set of fields (see <a class="reference internal" href="#attachment-1-required-data">Attachment 1 - Required Data</a>), but some fields will be one-to-many, and can be added in an add-hoc manner with a preference indicated (e.g. phone numbers).</dd>
+<dt>Contact List Management:</dt>
+<dd>Contacts will be grouped into lists. Lists are owned by a Sales Staffer, and can be shared like contacts.</dd>
+<dt>Search:</dt>
+<dd>All users will need to search for contacts. They should be able to limit the search by e-mail, name, phone #, geographical region, tags, associated sales staff. Only contacts that the user is allowed to see will show up.</dd>
+<dt>Mass E-mail:</dt>
+<dd>At the search result, business, or contact list level, the user should be able to send an e-mail to all contacts. The e-mail will be HTML formatted but also fall back to plain text.</dd>
+<dt>Mailing Labels:</dt>
+<dd>As with Mass E-mail above, the user should be able to print a PDF of mailing labels.</dd>
+<dt>Classification:</dt>
+<dd>There will be a simple, flat taxonomy. A classifier will be a multi-word string that can be applied to Contact Lists, Businesses, and Contacts. A central management interface will be provided for cleanup, but redundancy will be handled in the &#8216;tagging&#8217; user interface elements.</dd>
+<dt>Regions:</dt>
+<dd>A centralized hierarchy of regions will be managed in the system. Regions are associated with Contacts, Businesses, and Contact Lists.</dd>
+</dl>
+</div>
+<div class="section" id="restrictions">
+<h3>Restrictions<a class="headerlink" href="#restrictions" title="Permalink to this headline">¶</a></h3>
+<p>The following constraints are being placed on this project:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>We must use the existing PostgreSQL database.</li>
+<li>We must provide authentication via kerberos to the AD.</li>
+<li>There will be no sensitive data stored in this system.</li>
+<li>It must support FireFox 8+, but other platform support is desired.</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="preliminary-technical-details">
+<h3>Preliminary Technical Details<a class="headerlink" href="#preliminary-technical-details" title="Permalink to this headline">¶</a></h3>
+<p>A server will be provided by A. Customer running a version of Linux, with Python 2.7.x installed.</p>
+<p>The database will be provided by A. Customer&#8217;s DBA in the existing PostgreSQL cluster.</p>
+<p>There are currently no plans for further scale-out at this time.</p>
+</div>
+<div class="section" id="attachment-1-required-data">
+<h3>Attachment 1 - Required Data<a class="headerlink" href="#attachment-1-required-data" title="Permalink to this headline">¶</a></h3>
+<p>Here are all of the data fields that are to be captured.</p>
+<div class="section" id="contacts">
+<span id="contacts-data"></span><h4>Contacts<a class="headerlink" href="#contacts" title="Permalink to this headline">¶</a></h4>
+<p>All multiple fields will provide a title for each field (e.g. you can identify the second phone number as &#8216;home&#8217;)</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="55%" />
+<col width="11%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+<th class="head">Multiple?</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Given Name</td>
+<td>&#8216;First&#8217; name - official</td>
+<td>No.</td>
+</tr>
+<tr class="row-odd"><td>Family Name</td>
+<td>&#8216;Last&#8217; name</td>
+<td>No.</td>
+</tr>
+<tr class="row-even"><td>Nick Name</td>
+<td>Preferred name - displayed instead
+of given name if provided</td>
+<td>No.</td>
+</tr>
+<tr class="row-odd"><td>Phone number</td>
+<td>10-digit phone number</td>
+<td>Yes.</td>
+</tr>
+<tr class="row-even"><td>Address</td>
+<td>Mailing address</td>
+<td>Yes.</td>
+</tr>
+<tr class="row-odd"><td>E-mail</td>
+<td>Electronic mail address</td>
+<td>Yes.</td>
+</tr>
+<tr class="row-even"><td>Photo</td>
+<td>Head shot of the contact</td>
+<td>No.</td>
+</tr>
+<tr class="row-odd"><td>Notes</td>
+<td>Additional information</td>
+<td>Yes.</td>
+</tr>
+<tr class="row-even"><td>Gender</td>
+<td>Male, Female, Unknown</td>
+<td>No.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="businesses">
+<span id="businesses-data"></span><h4>Businesses<a class="headerlink" href="#businesses" title="Permalink to this headline">¶</a></h4>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In the system, I think we will refer to &#8216;Businesses&#8217; as &#8216;Organizations&#8217;.</p>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="55%" />
+<col width="11%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+<th class="head">Multiple?</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Name</td>
+<td>Name of the organization</td>
+<td>No.</td>
+</tr>
+<tr class="row-odd"><td>Description</td>
+<td>Detailed information about the organization</td>
+<td>No.</td>
+</tr>
+<tr class="row-even"><td>Primary Contact</td>
+<td>Person to contact for various purposes (a contact)</td>
+<td>Yes.</td>
+</tr>
+<tr class="row-odd"><td>Logo</td>
+<td>Company logo</td>
+<td>No.</td>
+</tr>
+<tr class="row-even"><td>Street Photo</td>
+<td>Photograph of the front of the building</td>
+<td>No.</td>
+</tr>
+<tr class="row-odd"><td>Address</td>
+<td>Mailing address</td>
+<td>Yes.</td>
+</tr>
+<tr class="row-even"><td>Phone number</td>
+<td>10-digit phone number</td>
+<td>Yes.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Requirements</a><ul>
+<li><a class="reference internal" href="#customer-request">Customer Request</a></li>
+<li><a class="reference internal" href="#analysis">Analysis</a></li>
+<li><a class="reference internal" href="#finalized-requirements">Finalized Requirements</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#vital-information">Vital Information</a></li>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#user-roles">User Roles</a></li>
+<li><a class="reference internal" href="#specific-features">Specific Features</a></li>
+<li><a class="reference internal" href="#restrictions">Restrictions</a></li>
+<li><a class="reference internal" href="#preliminary-technical-details">Preliminary Technical Details</a></li>
+<li><a class="reference internal" href="#attachment-1-required-data">Attachment 1 - Required Data</a><ul>
+<li><a class="reference internal" href="#contacts">Contacts</a></li>
+<li><a class="reference internal" href="#businesses">Businesses</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">jjmojojjmojo.addressbook - Advanced Pyramid Example Application</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="userstories.html"
+                        title="next chapter">Project Breakdown</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/requirements.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="userstories.html" title="Project Breakdown"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="jjmojojjmojo.addressbook - Advanced Pyramid Example Application"
+             >previous</a> |</li>
+    <li><a href="index.html">How I Develop Web Apps Documentation</a> &raquo; </li>
+ 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2012, Josh Johnson.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,366 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Project Breakdown &mdash; How I Build Web Apps</title>
+    
+    <link rel="stylesheet" href="_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="#" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.0.1a',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/toggle_sections.js"></script>
+    <link rel="top" title="How I Build Web Apps" href="index.html" />
+    <link rel="next" title="Implementation" href="implementation.html" />
+    <link rel="prev" title="Requirements" href="requirements.html" /> 
+  </head>
+  <body>
+    <div class="relbar-top">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="implementation.html" title="Implementation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="requirements.html" title="Requirements"
+             accesskey="P">previous</a> |</li>
+    <li><a href="index.html">How I Develop Web Apps Documentation</a> &raquo; </li>
+ 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="project-breakdown">
+<h1>Project Breakdown<a class="headerlink" href="#project-breakdown" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>At this point in the process, we&#8217;ve discussed the application at length with our customer.</p>
+<p>We&#8217;ve hammered out the specific requirements, there are a few more steps before we begin development.</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>We need to give the customer more information about how the app will be put together</li>
+<li>We need to plan the project and get timelines in place.</li>
+</ol>
+</div></blockquote>
+<p>Both needs can be handled by breaking down the features and functionality into smaller pieces, and writing them up in a language that the customer can easily digest.</p>
+<p>We can utilize a couple of concepts borrowed from the Agile Movement and more traditional software development to to break down the features: <strong>user stories</strong> and <strong>use cases</strong> (respectively).</p>
+<div class="section" id="user-stories-and-use-cases">
+<h3>User Stories and Use Cases<a class="headerlink" href="#user-stories-and-use-cases" title="Permalink to this headline">¶</a></h3>
+<p>User Stories help relay functional requirements information. They are written in the voice of the end user, and typically encapsulate a single functional <em>concept</em>.</p>
+<p>Use Cases are far more limited in scope, typically written in a more technical fashion and are useful for documenting how a functional concept is actually <em>used</em>.</p>
+<p>Both types of documentation accomplish the same goals:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><strong>Modularize the functionality of the system.</strong></li>
+<li><strong>Convey information about the system that users and clients can understand</strong></li>
+</ol>
+</div></blockquote>
+<dl class="docutils">
+<dt>They differ both in scope and voice, but also in how they break down the problem:</dt>
+<dd><ul class="first last simple">
+<li>User Stories tend to be a bit vague, leaving the process flow up to the developer</li>
+<li>Use Cases tend to spell out more detail about how the user will interact.</li>
+</ul>
+</dd>
+</dl>
+<p>In either case, it&#8217;s important to point out that User Stories and Use Cases are intentionally devoid of most implementation specifics.</p>
+<p>This helps keep the documentation accessible to non-technical readers, and frees the developer to implement the best solution to meet the requirements.</p>
+<p>That said, implementation details <strong>will</strong> need to be captured. That&#8217;s where the next section, <a class="reference internal" href="implementation.html"><em>Implementation</em></a> comes into play.</p>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><em>Requirements 101: User Stories vs. Use Cases</em>, by Andrew Stellman</dt>
+<dd><a class="reference external" href="http://www.stellman-greene.com/2009/05/03/requirements-101-user-stories-vs-use-cases/">http://www.stellman-greene.com/2009/05/03/requirements-101-user-stories-vs-use-cases/</a></dd>
+<dt><em>Writing Effective Use Cases</em>, by Alistair Cockburn</dt>
+<dd><a class="reference external" href="http://www.amazon.com/Writing-Effective-Cases-Alistair-Cockburn/dp/0201702258">http://www.amazon.com/Writing-Effective-Cases-Alistair-Cockburn/dp/0201702258</a></dd>
+<dt><em>Use Cases, 10 Years Later</em>, Alistair Cockburn</dt>
+<dd><a class="reference external" href="http://alistair.cockburn.us/Use+cases%2c+ten+years+later">http://alistair.cockburn.us/Use+cases%2c+ten+years+later</a></dd>
+</dl>
+</div>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">Find more sources and references for this information.</p>
+</div>
+</div>
+<div class="section" id="benefits-of-this-approach">
+<h3>Benefits Of This Approach<a class="headerlink" href="#benefits-of-this-approach" title="Permalink to this headline">¶</a></h3>
+<p>Breaking down customer requirements into User Stories and Use Cases has many benefits.</p>
+<div class="section" id="it-helps-the-customer-prioritize-features">
+<h4>It helps the customer prioritize features<a class="headerlink" href="#it-helps-the-customer-prioritize-features" title="Permalink to this headline">¶</a></h4>
+<p>Each user story can be discussed in terms the customer can understand. It becomes easier to sort out the &#8216;wish-list&#8217; features from features necessary to meet the requirements. The customer can then, at a glance, contribute to the phasing-in of more specialized features.</p>
+<p>Something very powerful happens when the <em>customer</em> says without prompting &#8220;I really want this, but lets save it for the next release&#8221;.</p>
+</div>
+<div class="section" id="it-keeps-scope-in-check">
+<h4>It keeps scope in check<a class="headerlink" href="#it-keeps-scope-in-check" title="Permalink to this headline">¶</a></h4>
+<p>It becomes very easy to see, just by the sheer volume of stories, what the scope of the application really is.</p>
+<p>Well written stories are very autonomous; most can be staged for development at any time.</p>
+<p>&#8220;Drive-by features&#8221; are minimized. The answer to any new ideas that come up after the initial sign-off of the generalized requirements is automatically &#8220;let me write up a user story&#8221;.</p>
+<p>The new idea gets worked into the backlog like any other feature. Its documented, agreed upon, and staged to be worked on.</p>
+<p>Scope can even grow as the customers needs evolve &#8211;that&#8217;s OK&#8211; if everything is continually worked through the backlog, new needs and changes in scope are just  <em>handled</em>, with little intervention.</p>
+</div>
+<div class="section" id="it-provides-a-way-to-work-more-effectively">
+<h4>It provides a way to work more effectively<a class="headerlink" href="#it-provides-a-way-to-work-more-effectively" title="Permalink to this headline">¶</a></h4>
+<p>Developers looking at the application as a series of modules helps expose ways to better meet the requirements independent of other features.</p>
+<p>Work can happen more readily in parallel.</p>
+<p>Estimation becomes something that a developer can do with confidence (Planning Poker helps here).</p>
+<p>It all leads to less wasted time, less waiting for customers, and ultimately a better quality product.</p>
+</div>
+</div>
+</div>
+<div class="section" id="use-case-diagrams">
+<h2>Use Case Diagrams<a class="headerlink" href="#use-case-diagrams" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="index-1">
+<p class="first admonition-title">Todo</p>
+<p class="last">Explain how Use Case diagrams are read and constructed.</p>
+</div>
+</div>
+<div class="section" id="functionality-breakdown">
+<h2>Functionality Breakdown<a class="headerlink" href="#functionality-breakdown" title="Permalink to this headline">¶</a></h2>
+<p>In this section, each User Story is presented along with the Use Cases that the story implies.</p>
+<p>We&#8217;ll be using a simplified Use Case template, focusing on use case diagrams.</p>
+<div class="admonition-todo admonition" id="index-2">
+<p class="first admonition-title">Todo</p>
+<p class="last">Provide Use Case details - just doing diagrams for now.</p>
+</div>
+<div class="section" id="user-management">
+<span id="user-story-user-management"></span><h3>User Management<a class="headerlink" href="#user-management" title="Permalink to this headline">¶</a></h3>
+<p>Sales Managers need to be able to manage users of the system. Managed users will have roles associated with them, and basic contact information. For the purposes of authentication, a user name and password will be stored and managed by the system.</p>
+<div class="section" id="use-cases">
+<h4>Use Cases<a class="headerlink" href="#use-cases" title="Permalink to this headline">¶</a></h4>
+<img alt="_images/User_Management.jpg" src="_images/User_Management.jpg" />
+</div>
+</div>
+<div class="section" id="contact-management">
+<span id="user-story-contact-management"></span><h3>Contact Management<a class="headerlink" href="#contact-management" title="Permalink to this headline">¶</a></h3>
+<p>The system&#8217;s primary purpose is to provide interfaces to manage contact information.</p>
+<p>Sales Staffers and Sales Managers need to be able to create and manage contacts. Contacts can be
+grouped into contact lists. Contacts and contact lists are only visible to the person who
+created them, and the Sales Manager, unless they have been shared with another Sales Staffer.</p>
+<p>See <a class="reference internal" href="requirements.html#contacts-data"><em>Contacts</em></a> for required fields. Some fields (such as &#8216;e-mail address&#8217;) can
+have multiple values, each value also gets a descriptive label.</p>
+<p>Contacts can be &#8216;active&#8217; or &#8216;inactive&#8217;, separating current from former customers.</p>
+<div class="section" id="id1">
+<h4>Use Cases<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<img alt="_images/Contact_Management.jpg" src="_images/Contact_Management.jpg" />
+</div>
+</div>
+<div class="section" id="organization-management">
+<span id="user-story-organization-management"></span><h3>Organization Management<a class="headerlink" href="#organization-management" title="Permalink to this headline">¶</a></h3>
+<p>Like contacts, we would also like to manage information about businesses, or the organizations
+that contacts are affiliated with.</p>
+<p>Organizations have the same basic user interactions as contacts (including sharing), but they can be associated with
+contacts, indicating membership of the contact in the organization.</p>
+<p>See <a class="reference internal" href="requirements.html#businesses-data"><em>Businesses</em></a> for required fields. Some fields (such as &#8216;primary contact&#8217;) can
+have multiple values, each value also gets a descriptive label.</p>
+<div class="section" id="id2">
+<h4>Use Cases<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<img alt="_images/Organization_Management.jpg" src="_images/Organization_Management.jpg" />
+</div>
+</div>
+<div class="section" id="regions">
+<span id="user-story-regions"></span><h3>Regions<a class="headerlink" href="#regions" title="Permalink to this headline">¶</a></h3>
+<p>We need to be able to maintain a hierarchical list of regions we service, so we can associate contacts,
+organizations, and contact lists with a given region.</p>
+<p>We want to be able to associate a contact with a location, for example the city of Kansas City, Mo, and have them come up
+in a listing or search for Missouri, The Mid West, North America, USA, Western Hemisphere, etc.</p>
+<div class="section" id="id3">
+<h4>Use Cases<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<img alt="_images/Regions.jpg" src="_images/Regions.jpg" />
+</div>
+</div>
+<div class="section" id="tagging">
+<span id="user-story-tagging"></span><h3>Tagging<a class="headerlink" href="#tagging" title="Permalink to this headline">¶</a></h3>
+<p>It should be possible to associate arbitrary phrases (tags) with Contacts, Organizations and Contact Lists. Sales Managers will be in charge of maintaining the list of tags, but Sales Staff will be able to add new tags without intervention from a Sales Manager.</p>
+<p>The system should try to prevent users from adding duplicate or very similar tags.</p>
+<p>Tags will be organized as a flat taxonomy.</p>
+<div class="section" id="id4">
+<h4>Use Cases<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<img alt="_images/Tagging.jpg" src="_images/Tagging.jpg" />
+</div>
+</div>
+<div class="section" id="search">
+<span id="user-story-search"></span><h3>Search<a class="headerlink" href="#search" title="Permalink to this headline">¶</a></h3>
+<p>All users need to be able to find contacts easily. At minimum, they should be able to search arbitrarily by
+e-mail, name, phone #, geographical region, tags, and associated sales staff (and any combination). Users should be able to choose to only include Contacts or Organizations.</p>
+<p>A faceted search, much like a traditional phone book should also be available, allowing users to drill down by first letter of last name, region and tags.</p>
+<div class="section" id="id5">
+<h4>Use Cases<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<img alt="_images/Search.jpg" src="_images/Search.jpg" />
+</div>
+</div>
+<div class="section" id="mass-e-mail">
+<span id="user-story-mass-e-mail"></span><h3>Mass E-mail<a class="headerlink" href="#mass-e-mail" title="Permalink to this headline">¶</a></h3>
+<p>Any user of the system needs to be able to send a bulk e-mail, formatted as HTML, to
+an entire contact list, a specific organization, or the results of a search.</p>
+<div class="section" id="id6">
+<h4>Use Cases<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<img alt="_images/Mass_E-mail.jpg" src="_images/Mass_E-mail.jpg" />
+</div>
+</div>
+<div class="section" id="print-labels">
+<span id="user-story-print-labels"></span><h3>Print Labels<a class="headerlink" href="#print-labels" title="Permalink to this headline">¶</a></h3>
+<p>Any user of the system needs to be able to print out labels from an entire contact list, or the
+results of a search.</p>
+<div class="section" id="id7">
+<h4>Use Cases<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<img alt="_images/Print_Labels.jpg" src="_images/Print_Labels.jpg" />
+</div>
+</div>
+<div class="section" id="administration-back-end">
+<span id="user-story-administration-back-end"></span><h3>Administration Back-End<a class="headerlink" href="#administration-back-end" title="Permalink to this headline">¶</a></h3>
+<p>We need to provide a way for Administrators to access any settings, static lookup lists, or other advanced
+features of the system. Debugging interfaces, log viewers, etc would also live here.</p>
+<div class="section" id="id8">
+<h4>Use Cases<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<img alt="_images/Administration_Back-End.jpg" src="_images/Administration_Back-End.jpg" />
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Project Breakdown</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a><ul>
+<li><a class="reference internal" href="#user-stories-and-use-cases">User Stories and Use Cases</a></li>
+<li><a class="reference internal" href="#benefits-of-this-approach">Benefits Of This Approach</a><ul>
+<li><a class="reference internal" href="#it-helps-the-customer-prioritize-features">It helps the customer prioritize features</a></li>
+<li><a class="reference internal" href="#it-keeps-scope-in-check">It keeps scope in check</a></li>
+<li><a class="reference internal" href="#it-provides-a-way-to-work-more-effectively">It provides a way to work more effectively</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#use-case-diagrams">Use Case Diagrams</a></li>
+<li><a class="reference internal" href="#functionality-breakdown">Functionality Breakdown</a><ul>
+<li><a class="reference internal" href="#user-management">User Management</a><ul>
+<li><a class="reference internal" href="#use-cases">Use Cases</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#contact-management">Contact Management</a><ul>
+<li><a class="reference internal" href="#id1">Use Cases</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#organization-management">Organization Management</a><ul>
+<li><a class="reference internal" href="#id2">Use Cases</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#regions">Regions</a><ul>
+<li><a class="reference internal" href="#id3">Use Cases</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tagging">Tagging</a><ul>
+<li><a class="reference internal" href="#id4">Use Cases</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#search">Search</a><ul>
+<li><a class="reference internal" href="#id5">Use Cases</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#mass-e-mail">Mass E-mail</a><ul>
+<li><a class="reference internal" href="#id6">Use Cases</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#print-labels">Print Labels</a><ul>
+<li><a class="reference internal" href="#id7">Use Cases</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#administration-back-end">Administration Back-End</a><ul>
+<li><a class="reference internal" href="#id8">Use Cases</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="requirements.html"
+                        title="previous chapter">Requirements</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="implementation.html"
+                        title="next chapter">Implementation</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/userstories.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="implementation.html" title="Implementation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="requirements.html" title="Requirements"
+             >previous</a> |</li>
+    <li><a href="index.html">How I Develop Web Apps Documentation</a> &raquo; </li>
+ 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2012, Josh Johnson.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

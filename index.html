@@ -1,0 +1,226 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>jjmojojjmojo.addressbook - Advanced Pyramid Example Application &mdash; How I Build Web Apps</title>
+    
+    <link rel="stylesheet" href="_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="#" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.0.1a',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/toggle_sections.js"></script>
+    <link rel="top" title="How I Build Web Apps" href="#" />
+    <link rel="next" title="Requirements" href="requirements.html" /> 
+  </head>
+  <body>
+    <div class="relbar-top">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="requirements.html" title="Requirements"
+             accesskey="N">next</a> |</li>
+    <li><a href="#">How I Develop Web Apps Documentation</a> &raquo; </li>
+ 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="jjmojojjmojo-addressbook-advanced-pyramid-example-application">
+<h1>jjmojojjmojo.addressbook - Advanced Pyramid Example Application<a class="headerlink" href="#jjmojojjmojo-addressbook-advanced-pyramid-example-application" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">This project should probably be renamed so people can find it easier on pypi.</p>
+</div>
+<div class="section" id="welcome">
+<h2>Welcome<a class="headerlink" href="#welcome" title="Permalink to this headline">¶</a></h2>
+<p>This is the documentation for a pyramid example application called jjmojojjmojo.addressbook.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#customer-request">Customer Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#analysis">Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#finalized-requirements">Finalized Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#summary">Summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#vital-information">Vital Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#user-roles">User Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#specific-features">Specific Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#restrictions">Restrictions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#preliminary-technical-details">Preliminary Technical Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#attachment-1-required-data">Attachment 1 - Required Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="requirements.html#contacts">Contacts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="requirements.html#businesses">Businesses</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="userstories.html">Project Breakdown</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="userstories.html#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="userstories.html#user-stories-and-use-cases">User Stories and Use Cases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="userstories.html#benefits-of-this-approach">Benefits Of This Approach</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="userstories.html#it-helps-the-customer-prioritize-features">It helps the customer prioritize features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="userstories.html#it-keeps-scope-in-check">It keeps scope in check</a></li>
+<li class="toctree-l4"><a class="reference internal" href="userstories.html#it-provides-a-way-to-work-more-effectively">It provides a way to work more effectively</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="userstories.html#use-case-diagrams">Use Case Diagrams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="userstories.html#functionality-breakdown">Functionality Breakdown</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="userstories.html#user-management">User Management</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="userstories.html#use-cases">Use Cases</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="userstories.html#contact-management">Contact Management</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="userstories.html#id1">Use Cases</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="userstories.html#organization-management">Organization Management</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="userstories.html#id2">Use Cases</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="userstories.html#regions">Regions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="userstories.html#id3">Use Cases</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="userstories.html#tagging">Tagging</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="userstories.html#id4">Use Cases</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="userstories.html#search">Search</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="userstories.html#id5">Use Cases</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="userstories.html#mass-e-mail">Mass E-mail</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="userstories.html#id6">Use Cases</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="userstories.html#print-labels">Print Labels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="userstories.html#id7">Use Cases</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="userstories.html#administration-back-end">Administration Back-End</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="userstories.html#id8">Use Cases</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="implementation.html">Implementation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="implementation.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="implementation.html#general-technological-approach">General Technological Approach</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="implementation.html#rationale-expansion">Rationale/Expansion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="implementation.html#implementation-details">Implementation Details</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="implementation.html#user-management">User Management</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="implementation.html#release-1-v-0-0-1">Release #1 (v. 0.0.1)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">TODO</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">jjmojojjmojo.addressbook - Advanced Pyramid Example Application</a><ul>
+<li><a class="reference internal" href="#welcome">Welcome</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="requirements.html"
+                        title="next chapter">Requirements</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="requirements.html" title="Requirements"
+             >next</a> |</li>
+    <li><a href="#">How I Develop Web Apps Documentation</a> &raquo; </li>
+ 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2012, Josh Johnson.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>
